@@ -12,7 +12,7 @@ def get_app():
 
 def check_version(app):
     p = run_command('brew info --cask {}'.format(app))
-    remote_ver = p[0].decode('utf-8').split()[1]
+    remote_ver = p[0].decode('utf-8').strip()
     local_ver  = p[2].decode('utf-8').split()[0].split('/')[-1]
     n = 0 if local_ver in remote_ver else 1
     return (n, remote_ver, local_ver)
